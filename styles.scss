@@ -1,0 +1,1189 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '~@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$gethsemane-primary: mat.define-palette(mat.$indigo-palette);
+$gethsemane-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$gethsemane-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$gethsemane-theme: mat.define-light-theme((
+  color: (
+    primary: $gethsemane-primary,
+    accent: $gethsemane-accent,
+    warn: $gethsemane-warn,
+  )
+));
+// $primary-color:#000000;//Satv
+// $secodery-color:#2c3e50;//Satv
+// $primary-color:#2c3e50;//Satv
+// $secodery-color:#000000;//Satv
+$primary-color:#6b0f1a;//Geth
+$secodery-color:#b91372;//Geth
+$bg-orange:#fdaa49;
+// background-color: #6b0f1a;
+// background-image: linear-gradient(315deg, #6b0f1a 0%, #b91372 74%);
+
+// $primary-color:#1DC6DF;//Geth
+// $secodery-color:#ffa800;//Geth
+// $primary-color:#99CCFF;
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+
+
+@include mat.all-component-themes($gethsemane-theme);
+@mixin mob {
+  @media (max-width: 480px) { @content; }
+}
+@mixin tab {
+  @media (min-width: 481px) and (max-width:991px) { @content; }
+}
+// @mixin desktop {
+//   @media (min-width: 481px) and (max-width:991px) { @content; }
+// }
+
+
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+// ===============Styles Start============
+:host {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 8px 0;
+}
+
+p {
+  margin: 0;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.toolbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  background-color: #1976d2;
+  color: white;
+  font-weight: 600;
+}
+
+.toolbar img {
+  margin: 0 16px;
+}
+
+.toolbar #twitter-logo {
+  height: 40px;
+  margin: 0 8px;
+}
+
+.toolbar #youtube-logo {
+  height: 40px;
+  margin: 0 16px;
+}
+
+.toolbar #twitter-logo:hover,
+.toolbar #youtube-logo:hover {
+  opacity: 0.8;
+}
+
+.content {
+  // display: flex;
+  // margin: 82px auto 32px;
+  // padding: 0 16px;
+  // // max-width: 960px;//comented@siva
+  // flex-direction: column;
+  // align-items: center;
+}
+
+svg.material-icons {
+  height: 24px;
+  width: auto;
+}
+
+svg.material-icons:not(:last-child) {
+  margin-right: 8px;
+}
+
+.card svg.material-icons path {
+  fill: #888;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.card {
+  all: unset;
+  border-radius: 4px;
+  border: 1px solid #eee;
+  background-color: #fafafa;
+  height: 40px;
+  width: 200px;
+  margin: 0 8px 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  line-height: 24px;
+}
+
+.card-container .card:not(:last-child) {
+  margin-right: 0;
+}
+
+.card.card-small {
+  height: 16px;
+  width: 168px;
+}
+
+.card-container .card:not(.highlight-card) {
+  cursor: pointer;
+}
+
+.card-container .card:not(.highlight-card):hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+}
+
+.card-container .card:not(.highlight-card):hover .material-icons path {
+  fill: rgb(105, 103, 103);
+}
+
+.card.highlight-card {
+  background-color: #1976d2;
+  color: white;
+  font-weight: 600;
+  border: none;
+  width: auto;
+  min-width: 30%;
+  position: relative;
+}
+
+.card.card.highlight-card span {
+  margin-left: 60px;
+}
+
+svg#rocket {
+  width: 80px;
+  position: absolute;
+  left: -10px;
+  top: -24px;
+}
+
+svg#rocket-smoke {
+  height: calc(100vh - 95px);
+  position: absolute;
+  top: 10px;
+  right: 180px;
+  z-index: -10;
+}
+
+a,
+a:visited,
+a:hover {
+  color: #1976d2;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #125699;
+}
+
+.terminal {
+  position: relative;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 6px;
+  padding-top: 45px;
+  margin-top: 8px;
+  overflow: hidden;
+  background-color: rgb(15, 15, 16);
+}
+
+.terminal::before {
+  content: "\2022 \2022 \2022";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: rgb(58, 58, 58);
+  color: #c2c3c4;
+  width: 100%;
+  font-size: 2rem;
+  line-height: 0;
+  padding: 14px 0;
+  text-indent: 4px;
+}
+
+.terminal pre {
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+  color: white;
+  padding: 0 1rem 1rem;
+  margin: 0;
+}
+
+.circle-link {
+  height: 40px;
+  width: 40px;
+  border-radius: 40px;
+  margin: 8px;
+  background-color: white;
+  border: 1px solid #eeeeee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: 1s ease-out;
+}
+
+.circle-link:hover {
+  transform: translateY(-0.25rem);
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+}
+
+footer {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  line-height: 20px;
+}
+
+footer a {
+  display: flex;
+  align-items: center;
+}
+
+.github-star-badge {
+  color: #24292e;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  padding: 3px 10px;
+  border: 1px solid rgba(27,31,35,.2);
+  border-radius: 3px;
+  background-image: linear-gradient(-180deg,#fafbfc,#eff3f6 90%);
+  margin-left: 4px;
+  font-weight: 600;
+}
+
+.github-star-badge:hover {
+  background-image: linear-gradient(-180deg,#f0f3f6,#e6ebf1 90%);
+  border-color: rgba(27,31,35,.35);
+  background-position: -.5em;
+}
+
+.github-star-badge .material-icons {
+  height: 16px;
+  width: 16px;
+  margin-right: 4px;
+}
+
+svg#clouds {
+  position: fixed;
+  bottom: -160px;
+  left: -230px;
+  z-index: -10;
+  width: 1920px;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 767px) {
+  .card-container > *:not(.circle-link) ,
+  .terminal {
+    width: 100%;
+  }
+
+  .card:not(.highlight-card) {
+    height: 16px;
+    margin: 8px 0;
+  }
+
+  .card.highlight-card span {
+    margin-left: 72px;
+  }
+
+  svg#rocket-smoke {
+    right: 120px;
+    transform: rotate(-5deg);
+  }
+}
+
+@media screen and (max-width: 575px) {
+  svg#rocket-smoke {
+    display: none;
+    visibility: hidden;
+  }
+}
+// ===============Styles End==============
+//custome style start=======
+a{
+  cursor: pointer;
+}
+
+// .mat-form-field-infix{
+//   // width: 30rem !important;
+// }
+.toolbar{
+  // background-color:$primary-color
+  // background-color:red
+  background-color: $primary-color;
+background-image: linear-gradient(147deg, $primary-color 0%, $secodery-color 74%);
+}
+.mat-step-header .mat-step-icon-selected{
+  background-color: #1DC6DF;
+  color: #fafafa;
+}
+.mat-step-header .mat-step-icon-state-edit {
+  background-color: #ffa800;
+  color: #fafafa;
+}
+.mat-raised-button.mat-primary{
+  // background-color:#1DC6DF
+  // border: 1px solid #1DC6DF;
+  border-radius: 3px;
+  min-width: 100px;
+  max-width: auto;
+  height: 40px;
+  display: block;
+  background: linear-gradient(to right,$primary-color 50%, $secodery-color 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all .5s ease-out;
+  color: white;
+}
+.mat-raised-button.mat-primary:hover{
+  background-position: left bottom;
+  
+}
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+  background-color: black;
+}
+.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb{
+  background-color: black;
+}
+.primary-custome-bg{
+  background-color:$primary-color
+}
+.secondary-custome-bg{
+  background-color: #ffa800;
+}
+
+.icon-custome-primary{
+  color: $primary-color !important;
+}
+.mat-mini-fab.mat-accent {
+  background-color: $primary-color;
+}
+// .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+//   border-color: $primary-color;
+// }
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+  border-color: $primary-color;
+}
+.mat-radio-button.mat-accent .mat-radio-inner-circle{
+  background-color: $primary-color;
+}
+.mat-raised-button.mat-button-disabled.mat-button-disabled{
+  color: #c2c3c4;
+}
+.custome-gradient-bg{
+  background-color:$primary-color;
+background-image: linear-gradient(147deg, $primary-color 0%, $secodery-color 74%);
+}
+table {
+  width: 100%;
+}
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+// .my-custom-tooltip {
+//   max-width: unset !important;
+// }
+// ::ng-deep .mat-tooltip {
+//   padding: 15px;
+//   font-size: 12px;
+//   width: 500px; //bastou adicionar isso
+// }
+// .outer {
+//   margin: 50px;
+// }
+
+// .button {
+//   border: 1px solid black;
+//   border-radius: 3px;
+//   width: 100px;
+//   height: 30px;
+//   display: block;
+
+//   background: linear-gradient(to right, black 50%, white 50%);
+//   background-size: 200% 100%;
+//   background-position: right bottom;
+//   transition: all .5s ease-out;
+// }
+
+// .button:hover {
+//   background-position: left bottom;
+// }
+
+// .text {
+//   text-align: center;
+//   font-size: 16px;
+//   line-height: 30px; 
+//   color: black;
+//   transition: all .6s ease-out;
+//   display: block;
+// }
+
+// .text:hover {
+//   color: white;  
+// }
+//custome style end=======
+
+// new css start
+$grey-color:#e5e5e5;
+.bg-orange {
+  background: #fdaa49;
+}
+.bg-blue {
+  background-color: #1dc6df;
+  color: white;
+}
+.text-blue {
+  color: #1dc6df;
+}
+.text-grey {
+  color: #999;
+}
+.font-bold {
+  font-weight: 500;
+}
+.base-btn {
+  border: solid #eee 1px;
+  padding: .8rem 1.9rem;
+  color: white!important;
+}
+.base-btn:hover {
+  background: #eee;
+  color: #1dc6df!important;
+  transition: 0.4s;
+  box-shadow: 2px 5px 10px #0000001e;
+}
+.blue-btn {
+  background-color: $secodery-color;
+  border: solid $secodery-color 1px;
+  padding: .8rem 1.9rem;
+  color: #fff!important;
+}
+.blue-btn:hover {
+  background-color: white;
+  border: solid $secodery-color 1px;
+  color: $secodery-color!important;
+  transition: 0.4s;
+}
+
+a {
+  text-decoration: none!important;
+}
+
+.heading-3 {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 0.8rem;
+  font-weight: 200;
+}
+.heading-2 {
+  font-size: 2rem;
+  line-height: 2.5rem;
+  margin-bottom: 0.8rem;
+}
+.heading-1-6 {
+  font-size: 1.6rem;
+  line-height: 1.5;
+  margin-bottom: 0.6rem;
+  font-weight: 200;
+}
+.heading-1 {
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+  margin-bottom: 0.6rem;
+}
+.line-hight-0 {
+  line-height: 0;
+}
+.eventDays {
+  background: white;
+  color: black;
+  padding: 5px 10px;
+  width: 60px;
+  margin: 0 5px;
+  border-radius: 4px;
+  border: solid 2px#fdaa49;
+  box-shadow: 2px 4px 10px #c26b06;
+  display: inline-block;
+}
+.welcome-block {
+  padding: 6rem 0rem 3rem 0;
+    @include mob {
+      padding: 3rem 0rem;
+    }  
+}
+.border-right {
+  border-right:solid 1px white;
+  @include mob {
+    border-right:none;
+  }
+  @include tab {
+    border-right:none;
+  }
+}
+.ourChurch .heading-2 {
+  @include mob {
+    text-align: left;
+  }  
+  @include tab {
+    text-align: left;
+  }  
+}
+.worship {
+  padding: 5rem 0 3rem 0;
+  background-color: white;
+}
+.tracks-list {
+  padding: 7px 0 12px 0;
+  border-bottom: solid 1px #f5f3f3;
+  a {
+    color: #999;
+    text-decoration: none;
+  }
+}
+.upComingEvents {
+  border:solid 1px $grey-color;
+  padding: 0 0;
+  display: flex;
+  margin-bottom: 0.5rem;
+  a {
+    text-decoration: none;
+    color: $primary-color;
+  }
+  a:hover {
+    color: $primary-color;
+  }
+
+  &__eventDate {
+    background-color: $secodery-color;
+    width: 5.5rem;
+    height: 3.2rem;
+    text-align: center;
+    margin: -1px;
+    .eventMonth {
+      font-size: .9rem;
+      color: #fff;
+      padding-top: 4px;
+    }
+    .eventDay {
+      font-size: 1.5rem;
+      color: white;
+    }
+  }
+  &__eventNames, &__eventTimes, &__eventDetails {
+    padding: 14px 10px;
+  }
+  &__eventNames {
+    width: 28rem;
+    border-right: solid 1px $grey-color;
+    }
+  &__event-title {
+    text-decoration: none;
+    color: $primary-color;
+  }
+  &__eventTimes {
+    width: 11rem;
+    border-right: solid 1px $grey-color;
+    text-align: center;
+    color: #999!important;
+    @include mob {
+      display: none;
+    } 
+  }
+  &__eventDetails {
+    width: 10rem;
+    text-align: center;
+    color: $primary-color;
+    a {
+      color: $secodery-color;
+    }
+  }
+  
+}
+
+.worshipTeam {
+  margin: 5rem 0 3rem 0;
+}
+.ourBlog {
+  background: $grey-color;
+  padding: 5rem 0 3rem 0;
+  .blogBox {
+    background: #fff;
+    box-shadow: 2px 5px 15px #00000010;
+    display: block;
+    margin-top: 0.5rem;
+    padding: 1rem;
+    &__heading {
+      color: $secodery-color;
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+    &__content {
+      color: #777;
+    }
+  }
+}
+
+.joinGroup {
+  padding: 3rem 0;
+  background: $secodery-color;
+  color: white;
+}
+.border-l {
+  border-left: solid 1px #eee;
+  height: 100%; 
+  @include mob {
+    border-left: solid 0px #eee;
+    border-top: solid 1px #eee;
+    margin: 20px 0;
+    display: block;
+  }
+  @include tab {
+    border-left: solid 0px #eee;
+    
+  }
+}
+.footer {
+  background: white;
+  padding: 3rem 0;
+}
+.sermons {
+  display: flex;
+  margin: 0 0 5px 0;
+  &__img{
+    margin-right: 0.7rem;
+  }
+  &__text a {
+    color: #222;
+  }
+  &__text a small{
+    color: #999;
+  }
+}
+.insta-profile {
+  margin: 3px;
+}
+.insta-profile:hover {
+  //content: '\271A';
+  //display: block;
+  background: #00000010;
+}
+
+
+.social-link {
+  font-size: 24px;
+  border: solid 1px#1dc6df;
+  border-radius: 3px;
+  width: 36px;
+  height: 36px;
+  text-align: center;
+  line-height: 1.5;
+  display: inline-block;
+  color: #999!important;
+  margin-right: 10px;
+}
+.social-link:hover {
+  color: white!important;
+  background-color:#1dc6df;
+  transition: 0.4s;
+}
+.resent-event a {
+  color: #000!important;
+}
+.resent-event a:hover {
+  color: #1dc6df!important;
+}
+.dashboard-main {
+  padding: 5rem 0 3rem 0;
+  margin-top: 3rem;
+  min-height: 90vh;
+}
+.goals-box {
+  margin-bottom: 1.3rem;
+  border-radius: 15px;
+  display: inline-block;
+  width: 100%;
+  background: #fff;
+  border-bottom: 4px solid #96eaf6;
+  padding: 2.5rem 1.8rem;
+  height: 200px;
+  box-shadow: 2px 5px 10px #00000029;
+}
+.goals-box-icons {
+  float: left;
+  height: 7rem;
+  display: block;
+  width: 7rem;
+  border-radius: 65px;
+  background: #fff;
+  text-align: center;
+  border: 2px solid #1dc6df;
+  box-shadow: 3px 6px 7px #1fc6df2e;
+  line-height: 8.5;
+  margin-right: 1rem;
+}
+.goals-box .heading-1 {
+  margin-top: 20px;
+  display: inline-block;
+}
+.red {
+  color: #e23906;
+  border: solid 2px #e23906;
+  box-shadow: 3px 6px 7px #e239062e;
+}
+.red-border {
+  border-bottom: solid 4px #fc9678;
+}
+.blue-circle {
+  color: #110aa3;
+  border: solid 2px #110aa3;
+  box-shadow: 3px 6px 7px #110aa32e;
+}
+.blue-border {
+  border-bottom: solid 4px #807aff;
+}
+.pp-circle {
+  color: #a30a9e;
+  border: solid 2px #a30a9e;
+  box-shadow: 3px 6px 7px #a30a9e2e;
+}
+.pp-border {
+  border-bottom: solid 4px #f69ef4;
+}
+.seab-circle {
+  color: #0aa37f;
+  border: solid 2px #0aa37f;
+  box-shadow: 3px 6px 7px #0aa37f2e;
+}
+.seab-border {
+  border-bottom: solid 4px #84ead2;
+}
+.voit-circle {
+  color: #a30a40;
+  border: solid 2px #a30a40;
+  box-shadow: 3px 6px 7px #a30a402e;
+}
+.voit-border {
+  border-bottom: solid 4px #fe93b9;
+}
+.contentMain-mt {
+  margin-top: 6.5%;
+  @include mob {
+    margin-top: 21%;
+  }
+  @include tab {
+    margin-top: 10%;
+  }
+}
+
+.products-block {
+  margin: 7rem 0 3rem 0;
+}
+.product:hover {
+  //border: #ebeaea solid 1px;
+  border-radius: 5px;
+  // transform: scale(1.1);
+  transition: 0.4s;
+  box-shadow: 3px 6px 10px rgba(0, 0, 0, 0);
+}
+.product {
+  background: white;
+  box-shadow: 3px 6px 10px rgba(0, 0, 0, 0.075);
+  margin: 0.5rem 0 1rem 0;
+   border-radius: 5px;
+  &__img {
+    height: 260px;
+    width: 100%;
+    text-align: center;
+    
+    .img-display {
+      width: 100%;
+      height: 260px;
+      border-radius: 5px 5px 0 0;
+      padding: 1rem;
+    }
+  }
+  &__content {
+    background: #f9f9f9;
+    padding: .6rem .6rem 1.2rem .6rem;
+    border: solid 1px #eee;
+    border-radius: 0 0 5px 5px;
+  }
+  &__title {
+    color: #1dc6df!important;
+    font-weight: 400;
+    text-align: center;
+    font-size: 1rem;
+    display: block;
+  }
+  &__price {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+    display: inline-block;    
+  }
+}
+
+.cart_container {
+  background: #f1f4f5;
+  padding: 0.5rem;
+  min-height: 20rem;
+  border: solid 1px #eee;
+  position: sticky;
+  top: 0;
+  display: inline-block;
+    width: 100%;
+  &__header {
+    color: $secodery-color;
+    font-size: 1.3rem;
+    margin: 0.7rem; 
+    border-bottom: solid 2px #eee; 
+    padding-bottom: 0.6rem; 
+  }
+  &__body {
+    max-height: 15rem;
+    overflow: auto;
+  }
+  &__footer {
+    //background-color: red;
+  }
+  &__cart_list {
+    border-bottom: 1px dashed #d6d6d6;
+    padding: 0.5rem 0.3rem;
+    display: block;
+    clear: both;
+    background: white;
+    border-radius: 5px; 
+  }
+  &__cart_list:hover .cart_item_close {
+    box-shadow: 5px 7px 10px #00000010; 
+    display: block;
+  }
+
+  &__cart_list_img {
+    margin: 0rem 0.5rem 0 0;
+    padding-bottom: 0.5rem;
+    float: left;
+  }
+  &__item-name {
+    font-size: 1rem;
+    color: $secodery-color;
+    display: block;
+  }
+  &__item-price {
+    color: #000;
+  }
+  &__cart_empty{
+    text-align: center;
+    display: block;
+    font-size: 1rem;
+    color: #f67f7f;
+    margin-top: 3rem;
+  }
+  .cart_item_close {
+    background: #ff000080;
+    color: #fff;
+    border-radius: 30px;
+    height: 18px;
+    width: 18px;
+    text-align: center;
+    position: relative;
+    top: 0;
+    right: 0;
+    float: right;
+    line-height: 1.7;
+    display: none;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: lighter;
+  }
+
+}
+
+//checkout btn start
+.btn-checkout {
+  padding: 0.7rem 3rem;
+  background: #1dc6df;
+  margin: 0 auto;
+  border-radius: 5px;
+  color: #fff!important;
+  font-size: 1rem;
+  border: solid 1px #1dc6df;
+  box-shadow: inset 0px 0px 0px 3px white;
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+}
+.btn-checkout:hover {
+  background-color: green;
+  transition: 0.4s;
+}
+
+// .btn-checkout span {
+//   z-index: 5;
+//   position: relative;
+//   transition: color 350ms ease;
+//   color: white;
+// }
+// .btn-checkout:hover span{
+//   color: white;
+//   border-radius: 5px;
+//   padding: 1px;
+// }
+
+// .btn-checkout::after, .btn-checkout::before{
+//   content: " ";
+//   display: block;
+//   position: absolute;
+//   width: 100%;
+//   top: 0;
+//   bottom: 0;
+//   right: 0;
+//   background: #30b90e;
+//   color: white!important;
+//   border-radius: 5px;
+//   z-index: -1;
+// }
+// .btn-checkout::before {
+// /*   background: blue; */
+//   transform: translateX(-100%);
+//   z-index: 1;
+// }
+// .btn-checkout:hover:before {
+//   transform: translateX(0);
+//   transition: transform 350ms ease;
+//   border-radius: 5px;
+// }
+// .btn-checkout::after {
+//    z-index: 0;
+//   transform: translateX(100%);
+//   transition: none;
+//   transition: transform 350ms ease;
+// }
+// .btn-checkout:hover:after {
+//   opacity: 1;
+//   transform: translateX(0);
+//  transition: transform 350ms 360ms ease;
+//  border-radius: 5px;
+// }
+
+//checkout btn end
+
+.categories {
+  background: white;
+  padding: 0.5rem;
+  min-height: 20rem;
+  border: solid 1px #eee;
+  position: sticky;
+  top: 26rem;
+   
+  &__name {
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: 0.5rem 0.7rem;
+    width: 100%;
+    display: block;
+    color: #182b3a!important;
+  }
+}
+
+.subTotal {
+  font-size: 1rem; 
+  margin: 1rem 0; 
+  text-align: right;
+}
+.subTotal span{
+  font-size: 1.2rem;  
+  color: $secodery-color;
+}
+.qty_inc_dec {
+  border: 1px solid #f4f4f4;
+  margin: 4px 0 0 10px;
+  padding: 5px 2px 0;
+  border-radius: 30px;
+
+}
+.qty_inc_dec:hover {
+  box-shadow: 2px 5px 10px #0000001f;
+  transition: 0.4s;
+  border: 1px solid #cccccc;
+} 
+.qty_count{
+  line-height: 1;
+  display: table-caption;
+  padding: 0 5px;
+}
+.btn-increase {
+  color: #999;
+  border: none;
+  background: none;
+  font-size: 20px;
+}
+.btn-increase:hover {
+  color: #09d61a;
+}
+.btn-decrease {
+  color: #999;
+  border: none;
+  background: none;
+  font-size: 20px;
+}
+.btn-decrease:hover {  
+  color: #eb4a4a;
+}
+
+.card_Summary {
+  background: $secodery-color;
+  color: white;
+  width: 100%;
+  border: $secodery-color 5px solid;
+  &__header {
+    padding: 1rem;
+    font-size: 1.5rem;
+    text-align: center;
+    background-color: white;
+    color: $secodery-color;
+  }
+  &__body {
+    padding: 1rem;
+  }
+  &__subtotal {
+    font-size: 1.2rem;
+    margin-bottom: 0.9rem;
+  }
+  &__shipping {
+    font-size: 1rem;
+    margin-bottom: 0.7rem;
+  }
+  &__taxes {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  &__grand_total {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+}
+.shipping_delivery {
+  border: $secodery-color;
+  margin: 1rem 0;
+  background: white;
+  padding: 2rem 1rem;
+  font-size: 1.2rem;
+  line-height: 2rem;
+}
+
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+ // display: inline-block;
+}
+
+.btn-upload {
+  border-bottom: 1px solid gray;
+  color: gray;
+  background-color: #e5e5e5;
+  padding: 15px 10px;
+  /* border-radius: 8px; */
+  /* font-size: 20px; */
+  /* font-weight: 700; */
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  width: 100%;
+  text-align: left;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+.church-heading {
+  font-size: 1.3rem;
+  color: $secodery-color;
+  line-height: 2.8;
+}
+.card_church {
+  width: 100%;
+    &__header {
+      background-color: $secodery-color;
+      padding: .8rem 1rem;
+      color: white;
+      font-size: 1.2rem;
+    }
+    &__body {
+      background-color: white;
+      padding: 0.8rem 1rem;
+    }
+    &__img {
+      width: 100%;
+      height: 200px;
+    }
+    &__names {
+      font-size: 0.8rem;
+      font-weight: 500;
+      line-height: 1.9;
+    }
+}
+// new css end
